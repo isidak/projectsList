@@ -1,0 +1,22 @@
+<div class="card border-primary mb-3">
+  <div class="card-body text-primary p-2">
+    <div class="row justify-content-center">
+      <div class="col-sm-1">
+        {{index}}
+      </div>
+      <div class="col-sm-7">
+        <h5 class="card-title">{{task.title}}</h5>
+      </div>
+      <div class="col-sm-4">
+        <button *ngIf="!showDetails" class="btn btn-primary" (click)="showDetails = !showDetails">Show details</button>
+        <button *ngIf="showDetails" class="btn btn-primary" (click)="showDetails = !showDetails">Hide details</button>
+      </div>
+    </div>
+    <div class="row" *ngIf="showDetails">
+      <div class="col-sm-12">
+        <p class="card-text">{{task.description}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

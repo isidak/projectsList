@@ -1,0 +1,9 @@
+<div class="container">
+  <ng-container *ngFor="let task of todoList; let i = index">
+    <div class="row">
+      <div class="col-sm-8 m-auto">
+        <app-todo-item [task]="task" [index]="i + 1"></app-todo-item>
+      </div>
+    </div>
+  </ng-container>
+</div>
