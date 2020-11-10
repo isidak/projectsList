@@ -12,26 +12,26 @@ export class AddTodoComponent implements OnInit {
   @Output() taskAdded = new EventEmitter();
 
   constructor(private fb: FormBuilder,
-              private todoService: TodoService) { }
+              private todoService: TodoService) {
+  }
 
   ngOnInit(): void {
     this.createForm();
   }
 
-  createForm(){
+  createForm() {
     this.todoForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required]
     });
   }
 
-  saveTodo(){
-    if (this.todoForm.valid){
+  saveTodo() {
+    if (this.todoForm.valid) {
       this.todoService.addTodo(this.todoForm.value).subscribe(res => this.taskAdded.emit());
       this.todoForm.reset();
     }
   }
-
 
 
 }

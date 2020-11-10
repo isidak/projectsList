@@ -6,11 +6,18 @@
     <div class="btn-group mt-5 ml-auto mr-auto mb-auto" role="group">
       <button class="btn btn-secondary" (click)="createComponent(0)">Todo list</button>
       <button class="btn btn-secondary" (click)="createComponent(1)">Add todo</button>
-      <button class="btn btn-secondary" (click)="createComponent(2)" [disabled]="toDoListArray === null || toDoListArray?.length === 0">Todo settings</button>
+      <button class="btn btn-secondary" (click)="createComponent(2)"
+              [disabled]="toDoListArray === null || toDoListArray?.length === 0">Todo settings
+      </button>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-10 mt-5 ml-auto mr-auto mb-auto">
+      <ng-container class="m-auto" *ngIf="toDoListArray === null || toDoListArray?.length === 0">
+        <div class="row">
+          <p class="m-auto">All tasks are completed! Add a new task</p>
+        </div>
+      </ng-container>
       <ng-container class="m-auto" #dynamicContainer></ng-container>
     </div>
   </div>

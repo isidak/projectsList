@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TodoListComponent} from '../todo-list/todo-list.component';
 import {TodoService} from '../../services/todo.service';
 
@@ -15,6 +15,10 @@ export class TodoSettingsComponent extends TodoListComponent implements OnInit {
 
   ngOnInit(): void {
     super.ngOnInit();
+  }
+
+  delete(id) {
+    this.todoList = this.todoList.filter((task) => task.id !== id);
   }
 
 }

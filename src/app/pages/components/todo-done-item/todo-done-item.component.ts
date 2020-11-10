@@ -18,7 +18,7 @@ export class TodoDoneItemComponent extends BaseTodoItemComponent implements OnIn
 
   }
 
-  done(id){
-    this.todoService.deleteTodo(id).subscribe( () => this.delete.next());
+  done(id) {
+    this.todoService.deleteTodo(id).subscribe(() => this.delete.next());
   }
 }

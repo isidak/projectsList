@@ -27,17 +27,12 @@ export class TodoService {
 
   addTodo(task) {
     return this.http.post('http://localhost:3000/tasks', task);
-      // .pipe(
-      // tap((res) => {
-      //   this.getTodoList();
-      // })
-    // );
   }
 
   deleteTodo(id) {
     return this.http.delete('http://localhost:3000/tasks' + `/${id}`).pipe(
       tap(() => {
-          this.taskList.filter((task) => task.id !== id);
+          this.taskList = this.taskList.filter((task) => task.id !== id);
           this.tasksListArray.next([...this.taskList]);
         }
       )

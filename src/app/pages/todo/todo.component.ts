@@ -2,7 +2,8 @@ import {
   Component,
   ComponentFactory,
   ComponentFactoryResolver,
-  ComponentRef, OnDestroy,
+  ComponentRef,
+  OnDestroy,
   OnInit,
   Type,
   ViewChild,
@@ -27,22 +28,22 @@ export class TodoComponent implements OnInit, OnDestroy {
   componentRef: ComponentRef<any>;
   private subscriptions = new Subscription();
   toDoListArray: ToDoItemModel[] = [];
-  // todoSettingsButtonDisabled = true;
 
   constructor(private resolver: ComponentFactoryResolver,
-              private todoService: TodoService) { }
+              private todoService: TodoService) {
+  }
 
   ngOnInit(): void {
     this.getTodoList();
     this.getListSub();
   }
 
-  createComponent(id){
+  createComponent(id) {
     this.container.clear();
     const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(this.componentsArray[id]);
     this.componentRef = this.container.createComponent(factory);
     this.componentRef.instance.todoList = this.toDoListArray;
-    this.componentRef.instance.taskAdded?.subscribe((res) => this.getTodoList());
+    this.componentRef.instance.taskAdded?.subscribe(() => this.getTodoList());
   }
 
   getTodoList() {
@@ -55,7 +56,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   getListSub() {
-    const todoListSub = this.todoService.tasksListArray$.subscribe( (res) => this.toDoListArray = res);
+    const todoListSub = this.todoService.tasksListArray$.subscribe((res) => this.toDoListArray = res);
     this.subscriptions.add(todoListSub);
   }
 }
