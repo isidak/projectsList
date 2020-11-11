@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {BaseTodoItemComponent} from '../base-todo-item/base-todo-item.component';
+import {BaseTodoItemComponent} from '../base-item/base-todo-item.component';
 
 @Component({
   selector: 'app-todo-item',

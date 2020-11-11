@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnDestroy, Output} from '@angular/core';
-import {BaseTodoItemComponent} from '../base-todo-item/base-todo-item.component';
+import {BaseTodoItemComponent} from '../base-item/base-todo-item.component';
 import {TodoService} from '../../services/todo.service';
 import {Subscription} from 'rxjs';
 

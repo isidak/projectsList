@@ -1,19 +1,9 @@
 {
   "tasks": [
     {
-      "title": "test",
-      "description": "asdasdas",
-      "id": 1
-    },
-    {
-      "title": "asdas",
-      "description": "asdasdasd",
-      "id": 2
-    },
-    {
       "title": "asdasd",
-      "description": "asdsda",
-      "id": 3
+      "description": "asdasdasd",
+      "id": 1
     }
   ]
 }
