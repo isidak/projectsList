@@ -1,8 +1,13 @@
 <div class="container">
-  <ng-container *ngFor="let task of todoList; let i = index">
+  <ng-container class="m-auto" *ngIf="todoList === null || todoList?.length === 0">
     <div class="row">
-      <div class="col-sm-8 m-auto">
-        <app-todo-done-item [task]="task" [index]="i + 1" (delete)="delete(task.id)"></app-todo-done-item>
+      <p class="m-auto">All tasks are completed! Add a new task</p>
+    </div>
+  </ng-container>
+  <ng-container *ngFor="let task of todoList; let i = index">
+    <div class="row" @flyInOut>
+      <div class="col-sm-8 m-auto" >
+        <app-todo-done-item  [task]="task" [index]="i + 1" (delete)="deleteItem(task.id)"></app-todo-done-item>
       </div>
     </div>
   </ng-container>

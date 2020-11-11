@@ -8,8 +8,10 @@ import {TodoService} from '../../services/todo.service';
   styleUrls: ['./add-todo.component.css']
 })
 export class AddTodoComponent implements OnInit {
-  todoForm: FormGroup;
+
   @Output() taskAdded = new EventEmitter();
+
+  todoForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private todoService: TodoService) {
@@ -19,16 +21,16 @@ export class AddTodoComponent implements OnInit {
     this.createForm();
   }
 
-  createForm() {
+  createForm(): void {
     this.todoForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required]
     });
   }
 
-  saveTodo() {
+  saveItem(): void {
     if (this.todoForm.valid) {
-      this.todoService.addTodo(this.todoForm.value).subscribe(res => this.taskAdded.emit());
+      this.todoService.addItem(this.todoForm.value).subscribe(() => this.taskAdded.emit());
       this.todoForm.reset();
     }
   }

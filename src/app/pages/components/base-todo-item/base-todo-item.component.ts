@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ToDoItemModel} from '../../models/to-do-item.model';
 
 @Component({
@@ -6,14 +6,7 @@ import {ToDoItemModel} from '../../models/to-do-item.model';
   templateUrl: './base-todo-item.component.html',
   styleUrls: ['./base-todo-item.component.css']
 })
-export class BaseTodoItemComponent implements OnInit {
+export class BaseTodoItemComponent {
   @Input() task: ToDoItemModel;
   @Input() index: number;
-  @Input() showDetails: boolean;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -5,7 +5,6 @@ import {
   ComponentRef,
   OnDestroy,
   OnInit,
-  Type,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -23,40 +22,75 @@ import {ToDoItemModel} from '../models/to-do-item.model';
 })
 export class TodoComponent implements OnInit, OnDestroy {
 
-  componentsArray: Type<any>[] = [TodoListComponent, AddTodoComponent, TodoSettingsComponent];
   @ViewChild('dynamicContainer', {read: ViewContainerRef}) container;
+
   componentRef: ComponentRef<any>;
-  private subscriptions = new Subscription();
   toDoListArray: ToDoItemModel[] = [];
+
+  private subscriptions = new Subscription();
 
   constructor(private resolver: ComponentFactoryResolver,
               private todoService: TodoService) {
   }
 
   ngOnInit(): void {
-    this.getTodoList();
+    this.getList();
     this.getListSub();
   }
 
-  createComponent(id) {
+  createComponent(componentName): void {
+    switch (componentName) {
+      case 'list':
+        this.createListComponent();
+        break;
+      case 'add':
+        this.createAddItemComponent();
+        break;
+      case 'settings':
+        this.createSettingsComponent();
+        break;
+      default:
+        break;
+    }
+
+  }
+
+  createListComponent(): void {
     this.container.clear();
-    const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(this.componentsArray[id]);
+    const factory: ComponentFactory<TodoListComponent> = this.resolver.resolveComponentFactory(TodoListComponent);
     this.componentRef = this.container.createComponent(factory);
     this.componentRef.instance.todoList = this.toDoListArray;
-    this.componentRef.instance.taskAdded?.subscribe(() => this.getTodoList());
   }
 
-  getTodoList() {
-    this.todoService.getTodoList().subscribe();
+  createAddItemComponent(): void {
+    this.container.clear();
+    const factory: ComponentFactory<AddTodoComponent> = this.resolver.resolveComponentFactory(AddTodoComponent);
+    this.componentRef = this.container.createComponent(factory);
+    const addTaskSub = this.componentRef.instance.taskAdded.subscribe(() => this.getList());
+    this.subscriptions.add(addTaskSub);
+  }
+
+  createSettingsComponent(): void {
+    this.container.clear();
+    const factory: ComponentFactory<TodoSettingsComponent> = this.resolver.resolveComponentFactory(TodoSettingsComponent);
+    this.componentRef = this.container.createComponent(factory);
+    this.componentRef.instance.todoList = this.toDoListArray;
+  }
+
+  getList(): void {
+    const listSub = this.todoService.getList().subscribe();
+    this.subscriptions.add(listSub);
 
   }
 
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
-  }
-
-  getListSub() {
+  getListSub(): void {
     const todoListSub = this.todoService.tasksListArray$.subscribe((res) => this.toDoListArray = res);
     this.subscriptions.add(todoListSub);
   }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+
 }
