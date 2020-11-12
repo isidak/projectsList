@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {TodoListComponent} from '../list/todo-list.component';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
+import {TodoService} from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-settings',
@@ -36,12 +37,13 @@ import {animate, keyframes, state, style, transition, trigger} from '@angular/an
 
 export class TodoSettingsComponent extends TodoListComponent {
 
-  constructor() {
-    super();
+  constructor(public todoService: TodoService) {
+    super(todoService);
   }
 
   deleteItem(id): void {
-    this.todoList = this.todoList.filter((task) => task.id !== id);
+
+    // this.todoList = this.todoList.filter((task) => task.id !== id);
   }
 
 }

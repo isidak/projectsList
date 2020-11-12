@@ -2,7 +2,7 @@
   <div class="row">
     <h2 class="m-auto">Todo Page</h2>
   </div>
-  <app-nav-buttons [toDoListArray]="toDoListArray" (openComponent)="createComponent($event)"></app-nav-buttons>
+  <app-nav-buttons (openComponent)="createComponent($event)"></app-nav-buttons>
   <div class="row">
     <div class="col-sm-10 mt-5 ml-auto mr-auto mb-auto">
       <ng-container class="m-auto" #dynamicContainer></ng-container>

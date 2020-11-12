@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ToDoItemModel} from '../models/to-do-item.model';
-import {tap} from 'rxjs/operators';
+import {switchMap, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from 'rxjs';
 
 
@@ -12,7 +12,7 @@ export class TodoService {
 
   taskList: ToDoItemModel[];
 
-  private tasksListArray = new BehaviorSubject<ToDoItemModel[]>(null);
+  private tasksListArray = new BehaviorSubject<ToDoItemModel[]>([]);
 
   tasksListArray$ = this.tasksListArray.asObservable();
 
@@ -20,25 +20,26 @@ export class TodoService {
   }
 
   getList(): Observable<ToDoItemModel[]> {
-    return this.http.get<ToDoItemModel[]>( 'tasks').pipe(
+    return this.http.get<ToDoItemModel[]>('tasks').pipe(
       tap((res) => {
         this.taskList = res;
-        this.tasksListArray.next(this.taskList);
+        this.tasksListArray.next(res);
       })
     );
   }
 
-  addItem(task): Observable<object> {
-    return this.http.post('tasks', task);
+  addItem(task): Observable<ToDoItemModel> {
+    return this.http.post<ToDoItemModel>('tasks', task);
   }
 
-  deleteItem(id): Observable<object> {
-    return this.http.delete(`tasks/${id}`).pipe(
-      tap(() => {
+  deleteItem(id): Observable<ToDoItemModel> {
+    return this.http.delete<ToDoItemModel>(`tasks/${id}`).pipe(
+      tap((res) => {
           this.taskList = this.taskList.filter((task) => task.id !== id);
           this.tasksListArray.next(this.taskList);
         }
-      )
+      ),
+      // switchMap(() => this.getList())
     );
   }
 }

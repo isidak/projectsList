@@ -1,9 +1,12 @@
 <div class="row">
-  <div class="btn-group mt-5 ml-auto mr-auto mb-auto" role="group">
-    <button class="btn btn-secondary" (click)="createComponent('list')">Todo list</button>
-    <button class="btn btn-secondary" (click)="createComponent('add')">Add Todo</button>
-    <button class="btn btn-secondary" (click)="createComponent('settings')"
-            [disabled]="toDoListArray === null || toDoListArray?.length === 0">Todo settings
-    </button>
-  </div>
+  <ng-container *ngIf="toDoListArray | async as list">
+    <div class="btn-group mt-5 ml-auto mr-auto mb-auto" role="group">
+      <button class="btn btn-secondary" (click)="createComponent('list')">Todo list</button>
+      <button class="btn btn-secondary" (click)="createComponent('add')">Add Todo</button>
+      <button class="btn btn-secondary" (click)="createComponent('settings')"
+              [disabled]="list.length === 0">Todo settings
+      </button>
+    </div>
+  </ng-container>
+
 </div>
