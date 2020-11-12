@@ -6,6 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {httpInterceptorProviders} from './pages/todo/interceptor/http-interceptor/interceptors';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

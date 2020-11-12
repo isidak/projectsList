@@ -8,12 +8,12 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import {TodoSettingsComponent} from '../components/settings/todo-settings.component';
-import {TodoListComponent} from '../components/list/todo-list.component';
-import {AddTodoComponent} from '../components/add-item/add-todo.component';
-import {TodoService} from '../services/todo.service';
+import {TodoSettingsComponent} from './components/settings/todo-settings.component';
+import {TodoListComponent} from './components/list/todo-list.component';
+import {AddTodoComponent} from './components/add-item/add-todo.component';
+import {TodoService} from './services/todo.service';
 import {Subscription} from 'rxjs';
-import {ToDoItemModel} from '../models/to-do-item.model';
+import {ToDoItemModel} from './models/to-do-item.model';
 
 @Component({
   selector: 'app-todo',

@@ -18,7 +18,7 @@ export class TodoDoneItemComponent extends BaseTodoItemComponent implements OnDe
   }
 
   deleteItem(id): void {
-    const deleteSub = this.todoService.deleteItem(id).subscribe(() => this.delete.next());
+    const deleteSub = this.todoService.deleteItem(id).subscribe(() => this.delete.emit());
     this.subscriptions.add(deleteSub);
   }
 
