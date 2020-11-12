@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {ToDoItemModel} from '../../models/to-do-item.model';
 
 @Component({
