@@ -59,7 +59,6 @@ export class TodoComponent implements OnInit, OnDestroy {
     this.container.clear();
     const factory: ComponentFactory<TodoListComponent> = this.resolver.resolveComponentFactory(TodoListComponent);
     this.componentRef = this.container.createComponent(factory);
-    this.componentRef.instance.todoList = this.toDoListArray;
   }
 
   createAddItemComponent(): void {
@@ -74,7 +73,7 @@ export class TodoComponent implements OnInit, OnDestroy {
     this.container.clear();
     const factory: ComponentFactory<TodoSettingsComponent> = this.resolver.resolveComponentFactory(TodoSettingsComponent);
     this.componentRef = this.container.createComponent(factory);
-    this.componentRef.instance.todoList = this.toDoListArray;
+
   }
 
   getList(): void {
@@ -84,7 +83,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   getListSub(): void {
-    const todoListSub = this.todoService.tasksListArray$.subscribe((res) => this.toDoListArray = res);
+    const todoListSub = this.todoService.tasksListArray$.subscribe();
     this.subscriptions.add(todoListSub);
   }
 

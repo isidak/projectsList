@@ -1,4 +1,4 @@
-import {animate, animation, keyframes, state, style, transition, trigger} from '@angular/animations';
+import {animate, animation, keyframes, style} from '@angular/animations';
 
 export const transAnimation = animation([
   animate(1000, keyframes([

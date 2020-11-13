@@ -31,11 +31,11 @@ export class AddTodoComponent implements OnInit, OnDestroy {
   }
 
   saveItem(): void {
-    if (this.todoForm.valid) {
-      const addSub = this.todoService.addItem(this.todoForm.value).subscribe(() => this.taskAdded.emit());
+    const addSub = this.todoService.addItem(this.todoForm.value).subscribe(() => {
+      this.taskAdded.emit();
       this.todoForm.reset();
-      this.subscriptions.add(addSub);
-    }
+    });
+    this.subscriptions.add(addSub);
   }
 
   ngOnDestroy(): void {
