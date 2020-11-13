@@ -8,7 +8,7 @@
     <ng-container *ngFor="let task of list; let i = index">
       <div class="row" @flyInOut>
         <div class="col-sm-8 m-auto" >
-          <app-todo-done-item  [task]="task" [index]="i + 1" (delete)="deleteItem(task.id)"></app-todo-done-item>
+          <app-todo-done-item  [task]="task" [index]="i + 1"></app-todo-done-item>
         </div>
       </div>
     </ng-container>
