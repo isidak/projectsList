@@ -12,7 +12,11 @@
     </div>
   </ng-container>
   <ng-container *ngIf="list.length">
-    <app-ngbd-pagination-advanced [collectionSize]="+list.length" [maxSize]="currentLimit" (pageChanged)="getListByPages($event, currentLimit)"></app-ngbd-pagination-advanced>
+    <div class="row">
+      <div class="m-auto">
+        <app-pagination [collectionSize]="taskListLength$ | async" [pageSize]="currentLimit"
+                        (pageChanged)="getListByPages($event, currentLimit)"></app-pagination>
+      </div>
+    </div>
   </ng-container>
-
 </div>

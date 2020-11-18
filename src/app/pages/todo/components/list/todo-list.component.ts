@@ -11,6 +11,7 @@ import {TodoService} from '../../services/todo.service';
 export class TodoListComponent implements OnInit, OnDestroy {
 
   todoList$: Observable<ToDoItemModel[]>;
+  taskListLength$: Observable<number>;
   private subscriptions = new Subscription();
   currentPage = 1;
   currentLimit: number;
@@ -20,6 +21,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getPageLimit();
+    this.getListLength();
     this.getListByPages(this.currentPage, this.currentLimit);
     this.todoList$ = this.todoService.tasksListArray$;
   }
@@ -28,8 +30,11 @@ export class TodoListComponent implements OnInit, OnDestroy {
     this.currentLimit = this.todoService.getPageLimit();
   }
 
+  getListLength(): void {
+    this.taskListLength$ = this.todoService.tasksListLength$;
+  }
+
   getListByPages(page, limit): void {
-    console.log(page);
     const listSub = this.todoService.getListPage(page, limit).subscribe();
     this.subscriptions.add(listSub);
 

@@ -1,9 +1,8 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {TodoListComponent} from '../list/todo-list.component';
 import {state, style, transition, trigger, useAnimation} from '@angular/animations';
 import {TodoService} from '../../services/todo.service';
 import {transAnimation} from '../../animations/animations';
-import {PaginationComponent} from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-todo-settings',
@@ -24,14 +23,9 @@ import {PaginationComponent} from '../pagination/pagination.component';
 
 
 export class TodoSettingsComponent extends TodoListComponent {
-  @ViewChild('pagination') pagination: PaginationComponent;
 
   constructor(public todoService: TodoService) {
     super(todoService);
-  }
-
-  changePagination(): void {
-    this.pagination.itemDeleted();
   }
 
 }

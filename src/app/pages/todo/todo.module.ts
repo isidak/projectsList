@@ -11,8 +11,7 @@ import {TodoSettingsComponent} from './components/settings/todo-settings.compone
 import {TodoDoneItemComponent} from './components/done-item/todo-done-item.component';
 import {NavButtonsComponent} from './components/nav-buttons/nav-buttons.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {PaginationComponent} from './components/pagination/pagination.component';
-import {NgbdPaginationAdvancedModule} from './components/ngbd-pagination-advanced/ngbd-pagination-advanced.module';
+import {PaginationModule} from './components/pagination/pagination.module';
 
 
 @NgModule({
@@ -24,13 +23,13 @@ import {NgbdPaginationAdvancedModule} from './components/ngbd-pagination-advance
     TodoSettingsComponent,
     TodoDoneItemComponent,
     NavButtonsComponent,
-    PaginationComponent,
-    ],
+  ],
   imports: [
     CommonModule,
     TodoRoutingModule,
     ReactiveFormsModule,
-    NgbdPaginationAdvancedModule
+    PaginationModule
   ]
 })
-export class TodoModule { }
+export class TodoModule {
+}

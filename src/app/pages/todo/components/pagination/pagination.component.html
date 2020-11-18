@@ -1,18 +1,2 @@
-<div class="container" *ngIf="listLength">
-  <div class="row">
-    <nav class="m-auto" aria-label="Page navigation">
-      <ul class="pagination m-auto">
-        <li class="page-item" [ngClass]="{disabled: currentPage === 1}">
-          <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
-        </li>
-        <li class="page-item" *ngFor="let page of pages" [ngClass]="{active: currentPage === page}"><a
-          class="page-link" (click)="changePage(page)">{{page}}</a></li>
-        <li class="page-item" [ngClass]="{disabled: currentPage === numberOfPages}">
-          <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</div>
-
-
+<ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="5" [pageSize]="pageSize"
+                [rotate]="true" [boundaryLinks]="true" (pageChange)="pageChange($event)"></ngb-pagination>
