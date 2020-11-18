@@ -12,6 +12,7 @@ import {TodoDoneItemComponent} from './components/done-item/todo-done-item.compo
 import {NavButtonsComponent} from './components/nav-buttons/nav-buttons.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {httpInterceptorProviders} from './interceptor/http-interceptor/interceptors';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {httpInterceptorProviders} from './interceptor/http-interceptor/intercept
     TodoListComponent,
     TodoSettingsComponent,
     TodoDoneItemComponent,
-    NavButtonsComponent],
+    NavButtonsComponent,
+    PaginationComponent],
   imports: [
     CommonModule,
     TodoRoutingModule,

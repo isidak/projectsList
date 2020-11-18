@@ -7,8 +7,9 @@
   <ng-container *ngFor="let task of list; let i = index">
     <div class="row" @flyInOut>
       <div class="col-sm-8 m-auto">
-        <app-todo-done-item [task]="task" [index]="i + 1"></app-todo-done-item>
+        <app-todo-done-item [task]="task" [index]="i + 1" (deleted)="changePagination()"></app-todo-done-item>
       </div>
     </div>
   </ng-container>
+  <app-pagination #pagination></app-pagination>
 </div>

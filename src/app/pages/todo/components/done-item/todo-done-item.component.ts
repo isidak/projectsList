@@ -1,4 +1,4 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, Output} from '@angular/core';
 import {BaseTodoItemComponent} from '../base-item/base-todo-item.component';
 import {TodoService} from '../../services/todo.service';
 import {Subscription} from 'rxjs';
@@ -9,6 +9,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./todo-done-item.component.css']
 })
 export class TodoDoneItemComponent extends BaseTodoItemComponent implements OnDestroy {
+  @Output() deleted = new EventEmitter();
 
   private subscriptions = new Subscription();
 
@@ -17,7 +18,7 @@ export class TodoDoneItemComponent extends BaseTodoItemComponent implements OnDe
   }
 
   deleteItem(id): void {
-    const deleteSub = this.todoService.deleteItem(id).subscribe();
+    const deleteSub = this.todoService.deleteItem(id).subscribe( () => this.deleted.emit());
     this.subscriptions.add(deleteSub);
   }
 

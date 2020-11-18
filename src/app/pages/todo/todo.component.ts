@@ -35,7 +35,7 @@ export class TodoComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getList();
-    this.getListSub();
+    // this.getListSub();
   }
 
   createComponent(componentName): void {
@@ -65,7 +65,9 @@ export class TodoComponent implements OnInit, OnDestroy {
     this.container.clear();
     const factory: ComponentFactory<AddTodoComponent> = this.resolver.resolveComponentFactory(AddTodoComponent);
     this.componentRef = this.container.createComponent(factory);
-    const addTaskSub = this.componentRef.instance.taskAdded.subscribe(() => this.getList());
+    const addTaskSub = this.componentRef.instance.taskAdded.subscribe(() => {
+      this.getList();
+    });
     this.subscriptions.add(addTaskSub);
   }
 
@@ -78,14 +80,18 @@ export class TodoComponent implements OnInit, OnDestroy {
 
   getList(): void {
     const listSub = this.todoService.getList().subscribe();
+    const listLengthSub = this.todoService.getListLength().subscribe();
     this.subscriptions.add(listSub);
+    this.subscriptions.add(listLengthSub);
 
   }
 
-  getListSub(): void {
-    const todoListSub = this.todoService.tasksListArray$.subscribe();
-    this.subscriptions.add(todoListSub);
-  }
+
+
+  // getListSub(): void {
+  //   const todoListSub = this.todoService.tasksListArray$.subscribe();
+  //   this.subscriptions.add(todoListSub);
+  // }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
