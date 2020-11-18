@@ -29,6 +29,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   }
 
   getListByPages(page, limit): void {
+    console.log(page);
     const listSub = this.todoService.getListPage(page, limit).subscribe();
     this.subscriptions.add(listSub);
 

@@ -1,0 +1,9 @@
+<div class="container" *ngIf="collectionSize">
+  <div class="row">
+    <div class="m-auto">
+      <ngb-pagination [collectionSize]="12" [(page)]="page" [maxSize]="maxSize"
+                      [rotate]="true" [boundaryLinks]="true" (pageChange)="pageChange($event)"></ngb-pagination>
+    </div>
+
+  </div>
+</div>

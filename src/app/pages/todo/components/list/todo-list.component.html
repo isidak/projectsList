@@ -1,5 +1,5 @@
 <div class="container" *ngIf="todoList$ | async as list">
-  <ng-container *ngIf="list.length === 0">
+  <ng-container *ngIf="!list.length">
     <div class="row">
       <p class="m-auto">All tasks are completed! Add a new task</p>
     </div>
@@ -11,8 +11,8 @@
       </div>
     </div>
   </ng-container>
-  <ng-container *ngIf="list.length !== 0">
-    <app-pagination></app-pagination>
+  <ng-container *ngIf="list.length">
+    <app-ngbd-pagination-advanced [collectionSize]="+list.length" [maxSize]="currentLimit" (pageChanged)="getListByPages($event, currentLimit)"></app-ngbd-pagination-advanced>
   </ng-container>
 
 </div>

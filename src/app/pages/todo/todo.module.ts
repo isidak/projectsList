@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { TodoRoutingModule } from './todo-routing.module';
-import { TodoComponent } from './todo.component';
+import {TodoRoutingModule} from './todo-routing.module';
+import {TodoComponent} from './todo.component';
 import {AddTodoComponent} from './components/add-item/add-todo.component';
 import {BaseTodoItemComponent} from './components/base-item/base-todo-item.component';
 import {TodoItemComponent} from './components/item/todo-item.component';
@@ -11,8 +11,8 @@ import {TodoSettingsComponent} from './components/settings/todo-settings.compone
 import {TodoDoneItemComponent} from './components/done-item/todo-done-item.component';
 import {NavButtonsComponent} from './components/nav-buttons/nav-buttons.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {httpInterceptorProviders} from './interceptor/http-interceptor/interceptors';
-import { PaginationComponent } from './components/pagination/pagination.component';
+import {PaginationComponent} from './components/pagination/pagination.component';
+import {NgbdPaginationAdvancedModule} from './components/ngbd-pagination-advanced/ngbd-pagination-advanced.module';
 
 
 @NgModule({
@@ -24,11 +24,13 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     TodoSettingsComponent,
     TodoDoneItemComponent,
     NavButtonsComponent,
-    PaginationComponent],
+    PaginationComponent,
+    ],
   imports: [
     CommonModule,
     TodoRoutingModule,
     ReactiveFormsModule,
+    NgbdPaginationAdvancedModule
   ]
 })
 export class TodoModule { }

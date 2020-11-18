@@ -1,5 +1,5 @@
 <div class="container" *ngIf="todoList$ | async as list">
-  <ng-container class="m-auto" *ngIf="list.length === 0">
+  <ng-container class="m-auto" *ngIf="!list.length">
     <div class="row">
       <p class="m-auto">All tasks are completed! Add a new task</p>
     </div>

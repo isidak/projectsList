@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {httpInterceptorProviders} from './pages/todo/interceptor/http-interceptor/interceptors';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {httpInterceptorProviders} from './pages/todo/interceptor/http-intercepto
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
