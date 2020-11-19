@@ -11,7 +11,7 @@ import {TodoSettingsComponent} from './components/settings/todo-settings.compone
 import {TodoDoneItemComponent} from './components/done-item/todo-done-item.component';
 import {NavButtonsComponent} from './components/nav-buttons/nav-buttons.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {PaginationModule} from './components/pagination/pagination.module';
+import {PaginationModule} from '../shared/modules/pagination/pagination.module';
 
 
 @NgModule({
