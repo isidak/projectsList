@@ -55,5 +55,28 @@
       "description": "Test 11 description",
       "id": 11
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "jdoe@gmail.com"
+    },
+    {
+      "firstName": "Adam",
+      "lastName": "Smith",
+      "email": "adamsmith@gmail.com",
+      "id": 2,
+      "address": "Stefanyka str 40",
+      "status": "active",
+      "image": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "firstName": "Bobby",
+      "lastName": "Ivanov",
+      "email": "bivanov@gmail.com",
+      "id": 3
+    }
   ]
 }
