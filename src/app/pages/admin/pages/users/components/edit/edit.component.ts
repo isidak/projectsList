@@ -17,6 +17,7 @@ export class EditComponent extends NewFormComponent implements OnInit {
     status: false,
     image: false
   };
+  fileToUpload: File = null;
 
   constructor(public fb: FormBuilder,
               private usersService: UsersService) {
@@ -56,6 +57,11 @@ export class EditComponent extends NewFormComponent implements OnInit {
       this.form.reset();
       this.user = null;
     });
+  }
+
+  handleFileInput(files: FileList): void{
+    this.fileToUpload = files.item(0);
+    console.log(this.fileToUpload);
   }
 
 }
