@@ -4,5 +4,6 @@ export class UserModel {
   lastName: string;
   email: string;
   address?: string;
+  status?: string;
   image?: string;
 }

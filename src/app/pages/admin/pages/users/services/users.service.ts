@@ -10,7 +10,10 @@ import {tap} from 'rxjs/operators';
 export class UsersService {
 
   private usersSub = new BehaviorSubject([]);
+  private currentUserSub = new BehaviorSubject<UserModel>(null);
+
   users$ = this.usersSub.asObservable();
+  currentUser$ = this.currentUserSub.asObservable();
 
   constructor(private http: HttpClient) {
   }
@@ -21,11 +24,19 @@ export class UsersService {
     );
   }
 
+  getUser(id): Observable<UserModel> {
+    return this.http.get<UserModel>(`users/${id}`).pipe(tap((res) => this.setCurrentUser(res)));
+  }
+
   addUser(user): Observable<UserModel> {
     return this.http.post<UserModel>('users', user);
   }
 
   updateUser(user, id): Observable<object> {
-    return this.http.patch(`users/${id}`, user);
+    return this.http.patch(`users/${id}`, user).pipe(tap(() => this.setCurrentUser(user)));
+  }
+
+  setCurrentUser(user: UserModel): void {
+    this.currentUserSub.next(user);
   }
 }

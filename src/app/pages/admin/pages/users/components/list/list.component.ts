@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UsersService} from '../../services/users.service';
 import {UserModel} from '../../models/user.model';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -12,9 +13,11 @@ export class ListComponent implements OnInit, OnDestroy {
 
   users: Observable<UserModel[]>;
   private subscriptions = new Subscription();
+
   editedUser$ = new BehaviorSubject<UserModel>(null);
 
-  constructor(private userService: UsersService) {
+  constructor(private userService: UsersService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -32,7 +35,8 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   editUser(user: UserModel): void {
-    this.editedUser$.next(user);
+    this.userService.setCurrentUser(user);
+    this.router.navigate(['admin/users/edit/', user.id]);
   }
 
   ngOnDestroy(): void {

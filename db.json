@@ -69,7 +69,7 @@
       "email": "adamsmith@gmail.com",
       "id": 2,
       "address": "Stefanyka str 40",
-      "status": "active",
+      "status": "disabled",
       "image": "https://picsum.photos/200/300"
     },
     {
@@ -77,6 +77,21 @@
       "lastName": "Ivanov",
       "email": "bivanov@gmail.com",
       "id": 3
+    },
+    {
+      "firstName": "Ivan",
+      "lastName": "Sidak",
+      "email": "isidak@gmail.com",
+      "id": 4
+    },
+    {
+      "firstName": "Ivan",
+      "lastName": "Sidak",
+      "email": "isidak@gmail.com",
+      "id": 5,
+      "address": "вул. Ковача Вілмоша 15",
+      "status": "active",
+      "image": "https://picsum.photos/200/300"
     }
   ]
 }

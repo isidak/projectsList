@@ -1,33 +1,57 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {UsersService} from '../../services/users.service';
-import {NewFormComponent} from '../new-form/new-form.component';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserModel} from '../../models/user.model';
+import {Observable, Subscription} from 'rxjs';
+import {ActivatedRoute, Params} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent extends NewFormComponent implements OnInit {
-  @Input() user: UserModel;
-  @Output() userSaved = new EventEmitter();
-  showButtons = {
-    address: false,
-    status: false,
-    image: false
-  };
-  fileToUpload: File = null;
+export class EditFormComponent implements OnInit, OnDestroy {
 
-  constructor(public fb: FormBuilder,
-              private usersService: UsersService) {
-    super(fb);
+  @Input() user: UserModel;
+
+  form: FormGroup;
+  disableUpdateButton = true;
+  fileToUpload: File = null;
+  imageSrc: string | ArrayBuffer;
+
+  private subscriptions = new Subscription();
+
+  constructor(private fb: FormBuilder,
+              private usersService: UsersService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    super.ngOnInit();
-    this.patchForm();
-    this.checkUserProfile();
+    this.createForm();
+    this.checkUpdateButtonStatus();
+    this.getCurrentUserByRoute();
+
+  }
+
+  createForm(): void {
+    this.form = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      address: ['', Validators.required],
+      status: ['', Validators.required],
+      image: ['', Validators.required]
+    });
+  }
+
+  checkUpdateButtonStatus(): void {
+    const formChangeSub = this.form.valueChanges.subscribe(() => this.disableUpdateButton = false);
+    this.subscriptions.add(formChangeSub);
+  }
+
+  getRouteId(): Observable<Params> {
+    return this.route.params;
   }
 
   patchForm(): void {
@@ -35,33 +59,43 @@ export class EditComponent extends NewFormComponent implements OnInit {
       firstName: this.user.firstName,
       lastName: this.user.lastName,
       email: this.user.email,
+      address: this.user.address,
+      status: this.user.status,
+      image: this.user.image
     });
   }
 
-  checkUserProfile(): void {
-    Object.keys(this.user).forEach((key) => {
-      if (key !== 'firstName' || 'lastName' || 'email') {
-        this.addControl(key);
-      }
-    });
-  }
-
-  addControl(controlName): void {
-    this.showButtons[controlName] = true;
-    this.form.addControl(controlName, this.fb.control(this.user[controlName], Validators.required));
-  }
 
   editUser(): void {
-    this.usersService.updateUser(this.form.value, this.user.id).subscribe(() => {
-      this.userSaved.next();
-      this.form.reset();
-      this.user = null;
-    });
+    const editUserSub = this.usersService.updateUser(this.form.value, this.user.id).subscribe();
+    this.subscriptions.add(editUserSub);
+    this.disableUpdateButton = true;
   }
 
-  handleFileInput(files: FileList): void{
-    this.fileToUpload = files.item(0);
-    console.log(this.fileToUpload);
+  handleFileInput(files: File): void {
+
+    this.fileToUpload = files[0];
+    const reader = new FileReader();
+    reader.onload = () => this.imageSrc = reader.result;
+    reader.readAsDataURL(this.fileToUpload);
   }
+
+  getCurrentUserByRoute(): void {
+    const getUserSub = this.getRouteId().pipe(
+      switchMap((res) => this.usersService.getUser(res.id))
+    ).subscribe((res) => {
+      this.user = {...res};
+      this.patchForm();
+    });
+    this.subscriptions.add(getUserSub);
+  }
+
+
+  ngOnDestroy(): void {
+    this.usersService.setCurrentUser(null);
+    this.subscriptions.unsubscribe();
+
+  }
+
 
 }

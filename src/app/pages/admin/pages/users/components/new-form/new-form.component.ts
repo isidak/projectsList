@@ -26,7 +26,7 @@ export class NewFormComponent implements OnInit {
   }
 
   save(): void {
-    this.saveForm.next(this.form.value);
+    this.saveForm.emit(this.form.value);
   }
 
   clearForm(): void {

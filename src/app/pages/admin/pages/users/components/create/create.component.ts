@@ -1,19 +1,31 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {UsersService} from '../../services/users.service';
-import {NewFormComponent} from '../new-form/new-form.component';
+import {Subscription} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent {
-  @ViewChild(NewFormComponent) form: NewFormComponent;
+export class CreateComponent implements OnDestroy {
 
-  constructor(public userService: UsersService) { }
+  private subscriptions = new Subscription();
 
-  addUser(user): void{
-    this.userService.addUser(user).subscribe(() => this.form.clearForm());
+  constructor(public userService: UsersService,
+              private router: Router) {
+  }
+
+  addUser(user): void {
+    const addUserSub = this.userService.addUser(user).subscribe((res) => {
+      this.router.navigate(['admin/users/edit/', res.id ]);
+    });
+    this.subscriptions.add(addUserSub);
+
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
 }
