@@ -39,9 +39,9 @@ export class EditFormComponent implements OnInit, OnDestroy {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      address: ['', Validators.required],
-      status: ['', Validators.required],
-      image: ['', Validators.required]
+      address: [''],
+      status: [''],
+      image: ['']
     });
   }
 
