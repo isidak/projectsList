@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {UserModel} from '../../models/user.model';
 
 @Component({
@@ -6,12 +6,6 @@ import {UserModel} from '../../models/user.model';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   @Input() currentUser: UserModel;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

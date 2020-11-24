@@ -12,9 +12,9 @@ import {Router} from '@angular/router';
 export class ListComponent implements OnInit, OnDestroy {
 
   users: Observable<UserModel[]>;
-  private subscriptions = new Subscription();
-
   editedUser$ = new BehaviorSubject<UserModel>(null);
+
+  private subscriptions = new Subscription();
 
   constructor(private userService: UsersService,
               private router: Router) {

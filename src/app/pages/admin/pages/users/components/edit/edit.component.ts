@@ -54,14 +54,14 @@ export class EditFormComponent implements OnInit, OnDestroy {
     return this.route.params;
   }
 
-  patchForm(): void {
+  patchForm(user): void {
     this.form.patchValue({
-      firstName: this.user.firstName,
-      lastName: this.user.lastName,
-      email: this.user.email,
-      address: this.user.address,
-      status: this.user.status,
-      image: this.user.image
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      address: user.address,
+      status: user.status,
+      image: user.image
     });
   }
 
@@ -85,7 +85,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
       switchMap((res) => this.usersService.getUser(res.id))
     ).subscribe((res) => {
       this.user = {...res};
-      this.patchForm();
+      this.patchForm(res);
     });
     this.subscriptions.add(getUserSub);
   }
