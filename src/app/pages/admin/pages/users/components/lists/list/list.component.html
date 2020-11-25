@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row" *ngIf="users | async as users;else noUsers">
+    <div class="row">
+      <ul class="list-group list-group-horizontal">
+        <li class="list-group-item list-group-item-primary" style="width: 35vw">User name</li>
+        <li class="list-group-item list-group-item-primary" style="width: 35vw">Email</li>
+      </ul>
+    </div>
+    <ng-container *ngFor="let user of users">
+      <app-base-user [user]="user"></app-base-user>
+    </ng-container>
+  </div>
+  <ng-template #noUsers>
+    <hr>
+    <h5>There are no users in the system</h5>
+  </ng-template>
+</div>

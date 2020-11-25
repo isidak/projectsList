@@ -6,7 +6,15 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-link active" routerLink="users">Users</a>
-
+    </div>
+    <div class="navbar-nav ml-auto" *ngIf="currentUser">
+      <a class="nav-link active" disabled>Logged in user: {{currentUser.email}}</a>
+    </div>
+    <div class="navbar-nav ml-auto" *ngIf="!currentUser">
+      <a class="nav-link active" (click)="login()">Login</a>
+    </div>
+    <div class="navbar-nav ml-auto" *ngIf="currentUser">
+      <a class="nav-link active" (click)="logout()">Logout</a>
     </div>
   </div>
 </nav>

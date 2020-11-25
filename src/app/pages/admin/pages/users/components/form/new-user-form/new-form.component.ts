@@ -1,13 +1,13 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {BaseFormComponent} from '../base-form/base-form.component';
+import {AbstractFormComponent} from '../base-form/abstract-form.component';
 
 @Component({
   selector: 'app-new-form',
   templateUrl: './new-form.component.html',
   styleUrls: ['./new-form.component.css']
 })
-export class NewFormComponent extends BaseFormComponent implements  OnInit {
+export class NewFormComponent extends AbstractFormComponent implements  OnInit {
   @Output() saveForm = new EventEmitter();
   form: FormGroup;
 
@@ -16,11 +16,12 @@ export class NewFormComponent extends BaseFormComponent implements  OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm();
+    super.ngOnInit();
   }
 
   save(): void {
     this.saveForm.emit(this.form.value);
+    this.clearForm();
   }
 
   protected generateFG(): FormGroup {

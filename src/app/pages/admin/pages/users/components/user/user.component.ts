@@ -1,13 +1,13 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {UserModel} from '../../models/user.model';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {BaseUserComponent} from '../base-user/base-user.component';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent {
-  @Input() user: UserModel;
+export class UserComponent extends BaseUserComponent {
+
   @Output() edited = new EventEmitter();
   @Output() deleted = new EventEmitter();
 

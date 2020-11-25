@@ -5,14 +5,14 @@ import {UserModel} from '../../../models/user.model';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
-import {BaseFormComponent} from '../base-form/base-form.component';
+import {AbstractFormComponent} from '../base-form/abstract-form.component';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditFormComponent extends BaseFormComponent implements OnInit, OnDestroy {
+export class EditFormComponent extends AbstractFormComponent implements OnInit, OnDestroy {
 
   @Input() user: UserModel;
 
@@ -29,7 +29,7 @@ export class EditFormComponent extends BaseFormComponent implements OnInit, OnDe
   }
 
   ngOnInit(): void {
-    this.createForm();
+    super.ngOnInit();
     this.checkUpdateButtonStatus();
     this.getCurrentUserByRoute();
 
