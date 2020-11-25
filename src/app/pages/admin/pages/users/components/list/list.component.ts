@@ -30,13 +30,17 @@ export class ListComponent implements OnInit, OnDestroy {
     this.subscriptions.add(userSub);
   }
 
-  private userSubscription(): void {
-    this.users = this.userService.users$;
-  }
-
   editUser(user: UserModel): void {
     this.userService.setCurrentUser(user);
-    this.router.navigate(['admin/users/edit/', user.id]);
+    this.router.navigate(['admin/users/edit-form/', user.id]);
+  }
+
+  deleteUser(id): void{
+    this.userService.deleteUser(id).subscribe();
+  }
+
+  private userSubscription(): void {
+    this.users = this.userService.users$;
   }
 
   ngOnDestroy(): void {

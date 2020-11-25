@@ -1,21 +1,21 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {UsersService} from '../../services/users.service';
+import {UsersService} from '../../../services/users.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserModel} from '../../models/user.model';
+import {UserModel} from '../../../models/user.model';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
+import {BaseFormComponent} from '../base-form/base-form.component';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditFormComponent implements OnInit, OnDestroy {
+export class EditFormComponent extends BaseFormComponent implements OnInit, OnDestroy {
 
   @Input() user: UserModel;
 
-  form: FormGroup;
   disableUpdateButton = true;
   fileToUpload: File = null;
   imageSrc: string | ArrayBuffer;
@@ -25,6 +25,7 @@ export class EditFormComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder,
               private usersService: UsersService,
               private route: ActivatedRoute) {
+    super();
   }
 
   ngOnInit(): void {
@@ -32,17 +33,6 @@ export class EditFormComponent implements OnInit, OnDestroy {
     this.checkUpdateButtonStatus();
     this.getCurrentUserByRoute();
 
-  }
-
-  createForm(): void {
-    this.form = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      address: [''],
-      status: [''],
-      image: ['']
-    });
   }
 
   checkUpdateButtonStatus(): void {
@@ -65,12 +55,12 @@ export class EditFormComponent implements OnInit, OnDestroy {
     });
   }
 
-
   editUser(): void {
     const editUserSub = this.usersService.updateUser(this.form.value, this.user.id).subscribe();
     this.subscriptions.add(editUserSub);
     this.disableUpdateButton = true;
   }
+
 
   handleFileInput(files: File): void {
 
@@ -88,6 +78,17 @@ export class EditFormComponent implements OnInit, OnDestroy {
       this.patchForm(res);
     });
     this.subscriptions.add(getUserSub);
+  }
+
+  protected generateFG(): FormGroup {
+    return this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      address: [''],
+      status: [''],
+      image: ['']
+    });
   }
 
 
