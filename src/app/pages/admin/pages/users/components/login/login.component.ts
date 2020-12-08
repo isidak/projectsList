@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {AbstractFormComponent} from '../form/base-form/abstract-form.component';
+import {AbstractFormComponent} from '../forms/abstract-form/abstract-form.component';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../services/auth.service';
+import {AuthService} from '../../services/auth/auth.service';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -26,20 +26,17 @@ export class LoginComponent extends AbstractFormComponent implements OnInit, OnD
   }
 
   login(): void {
-    const loginSub = this.authService.login(this.form.value.email).subscribe((res) => {
-      if (res) {
+    const loginSub = this.authService.login(this.form.value.email).subscribe(() => {
         this.form.reset();
         this.activeModal.close();
-      } else {
+      }, () => {
         this.error = true;
       }
-    });
-
+    );
     this.subscriptions.add(loginSub);
-
   }
 
-  protected generateFG(): FormGroup {
+  protected generateFormGroup(): FormGroup {
     return this.fb.group({
       email: ['', [Validators.required, Validators.email]]
     });

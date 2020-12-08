@@ -1,11 +1,13 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {AdminComponent} from './admin.component';
 
 const routes: Routes = [
   {
-    path: '', component: AdminComponent, children: [
-      {path: 'users', loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule)}
+    path: '', component: AdminComponent
+    , children: [
+      // {path: 'users', loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule)},
+      {path: 'users', loadChildren: () => import('./users-lib.module').then(m => m.UsersLibModule)}
     ]
   },
 ];

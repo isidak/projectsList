@@ -19,7 +19,7 @@ describe('TodoListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create-user', () => {
     expect(component).toBeTruthy();
   });
 });

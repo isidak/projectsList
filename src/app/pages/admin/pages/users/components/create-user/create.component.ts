@@ -18,7 +18,7 @@ export class CreateComponent implements OnDestroy {
 
   addUser(user): void {
     const addUserSub = this.userService.addUser(user).subscribe((res) => {
-      this.router.navigate(['admin/users/edit-form/', res.id ]);
+      this.router.navigate(['admin/users/edit-forms/', res.id ]);
     });
     this.subscriptions.add(addUserSub);
 

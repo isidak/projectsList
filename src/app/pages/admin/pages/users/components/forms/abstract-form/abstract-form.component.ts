@@ -12,10 +12,10 @@ export abstract class AbstractFormComponent implements OnInit {
     this.createForm();
   }
 
-  protected abstract generateFG(): FormGroup;
+  protected abstract generateFormGroup(): FormGroup;
 
   protected createForm(): void {
-    this.form = this.generateFG();
+    this.form = this.generateFormGroup();
   }
 
   protected clearForm(): void {

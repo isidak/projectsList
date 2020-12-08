@@ -5,7 +5,7 @@ import {UserModel} from '../../../models/user.model';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
-import {AbstractFormComponent} from '../base-form/abstract-form.component';
+import {AbstractFormComponent} from '../abstract-form/abstract-form.component';
 
 @Component({
   selector: 'app-edit',
@@ -80,7 +80,7 @@ export class EditFormComponent extends AbstractFormComponent implements OnInit, 
     this.subscriptions.add(getUserSub);
   }
 
-  protected generateFG(): FormGroup {
+  protected generateFormGroup(): FormGroup {
     return this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],

@@ -18,16 +18,16 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.usersSubscription();
     this.getUsers();
-    this.userSubscription();
   }
 
-  getUsers(): void {
+  usersSubscription(): void {
     const userSub = this.userService.getUsers().subscribe();
     this.subscriptions.add(userSub);
   }
 
-  userSubscription(): void {
+  getUsers(): void {
     this.users = this.userService.users$;
   }
 

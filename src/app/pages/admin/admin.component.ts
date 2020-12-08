@@ -3,7 +3,7 @@ import {UsersService} from './pages/users/services/users.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LoginComponent} from './pages/users/components/login/login.component';
 import {BaseUserModel} from './pages/users/models/base-user.model';
-import {AuthService} from './pages/users/services/auth.service';
+import {AuthService} from './pages/users/services/auth/auth.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 
@@ -43,7 +43,10 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   openModal(): void {
     const modalRef = this.modalService.open(LoginComponent);
-    modalRef.result.then();
+    modalRef.result.then(
+      () => {},
+      () => {}
+    );
   }
 
   ngOnDestroy(): void {

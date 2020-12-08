@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {BaseUserComponent} from '../base-user/base-user.component';
+import {BaseUserComponent} from './base-user/base-user.component';
 
 @Component({
   selector: 'app-user',

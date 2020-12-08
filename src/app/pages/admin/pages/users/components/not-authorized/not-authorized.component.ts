@@ -10,4 +10,7 @@ export class NotAuthorizedComponent {
 
   constructor(public activeModal: NgbActiveModal) { }
 
+  closeModal(): void {
+    this.activeModal.close();
+  }
 }
