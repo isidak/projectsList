@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {UsersService} from './pages/users/services/users.service';
+import {UsersService} from 'my-lib';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {LoginComponent} from './pages/users/components/login/login.component';
-import {BaseUserModel} from './pages/users/models/base-user.model';
+import {LoginComponent} from 'my-lib';
+import {BaseUserModel} from 'my-lib';
 import {AuthService} from './pages/users/services/auth/auth.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';

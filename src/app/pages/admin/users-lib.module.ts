@@ -9,6 +9,7 @@ import {MyLibModule} from 'my-lib';
   imports: [
     CommonModule,
     MyLibModule
-  ]
+  ],
+  exports: [MyLibModule]
 })
 export class UsersLibModule { }
