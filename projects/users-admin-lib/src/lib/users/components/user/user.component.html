@@ -1,0 +1,12 @@
+<div class="row">
+  <ul class="list-group list-group-horizontal">
+      <li class="list-group-item" style="width: 25vw">{{user.firstName}} {{user.lastName}}</li>
+      <li class="list-group-item" style="width: 35vw">{{user.email}}</li>
+      <li class="list-group-item" style="width: 15vw">
+        <a (click)="editUser(user)" class="btn btn-secondary btn-sm">Edit</a>
+        <a (click)="deleteUser(user.id)" class="btn btn-danger btn-sm ml-1">Delete</a>
+      </li>
+  </ul>
+</div>
+
+

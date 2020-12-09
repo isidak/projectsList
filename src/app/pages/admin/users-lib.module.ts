@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {MyLibModule} from 'my-lib';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {UsersAdminLibModule} from 'users-admin-lib';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    MyLibModule
+    UsersAdminLibModule
   ],
-  exports: [MyLibModule]
+  exports: [UsersAdminLibModule]
 })
 export class UsersLibModule { }

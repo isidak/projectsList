@@ -164,6 +164,46 @@
           }
         }
       }
+    },
+    "usersAdminLib": {
+      "projectType": "library",
+      "root": "projects/users-admin-lib",
+      "sourceRoot": "projects/users-admin-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/users-admin-lib/tsconfig.lib.json",
+            "project": "projects/users-admin-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/users-admin-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/users-admin-lib/src/test.ts",
+            "tsConfig": "projects/users-admin-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/users-admin-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/users-admin-lib/tsconfig.lib.json",
+              "projects/users-admin-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "todolist"
 }
