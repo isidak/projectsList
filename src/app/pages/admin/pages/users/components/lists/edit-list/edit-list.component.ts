@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {UserModel} from '../../../models/user.model';
-import {UsersService} from '../../../services/users.service';
+import {UsersService} from 'users-admin-lib';
 import {Router} from '@angular/router';
 import {ListComponent} from '../list/list.component';
 

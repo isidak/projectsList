@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {UserModel} from './models/user.model';
-import {UsersService} from './services/users.service';
+import {UsersService} from 'users-admin-lib';
 
 @Component({
   selector: 'app-users',

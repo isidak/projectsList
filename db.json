@@ -76,7 +76,10 @@
       "firstName": "Bobby",
       "lastName": "Ivanov",
       "email": "bivanov@gmail.com",
-      "id": 3
+      "id": 3,
+      "address": null,
+      "status": null,
+      "image": null
     }
   ]
 }

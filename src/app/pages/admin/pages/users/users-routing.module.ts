@@ -2,10 +2,10 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {UsersComponent} from './users.component';
 import {ListComponent} from './components/lists/list/list.component';
-import {EditFormComponent} from './components/forms/edit-form/edit.component';
+import {EditFormComponent} from 'users-admin-lib';
 import {CreateComponent} from './components/create-user/create.component';
-import {EditListComponent} from './components/lists/edit-list/edit-list.component';
 import {AuthGuard} from './guards/auth.guard';
+import {EditListComponent} from './components/lists/edit-list/edit-list.component';
 
 const routes: Routes = [
   {

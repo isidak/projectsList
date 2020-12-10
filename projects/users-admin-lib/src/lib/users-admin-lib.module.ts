@@ -1,14 +1,19 @@
-import { NgModule } from '@angular/core';
-import { UsersAdminLibComponent } from './users-admin-lib.component';
-import {UsersModule} from './users/users.module';
-
+import {NgModule} from '@angular/core';
+import {NewFormComponent} from './users/components/forms/new-user-form/new-form.component';
+import {UserComponent} from './users/components/user/user.component';
+import {EditFormComponent} from './users/components/forms/edit-form/edit.component';
+import {BaseUserComponent} from './users/components/user/base-user/base-user.component';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [UsersAdminLibComponent],
+  declarations: [NewFormComponent, UserComponent, EditFormComponent, BaseUserComponent ],
   imports: [
-    UsersModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  exports: [UsersAdminLibComponent, UsersModule]
+  exports: [NewFormComponent, UserComponent, EditFormComponent, BaseUserComponent]
 })
 export class UsersAdminLibModule { }

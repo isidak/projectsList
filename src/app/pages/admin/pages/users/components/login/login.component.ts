@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {AbstractFormComponent} from '../forms/abstract-form/abstract-form.component';
+import {AbstractFormComponent} from 'users-admin-lib';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth/auth.service';
 import {Subscription} from 'rxjs';

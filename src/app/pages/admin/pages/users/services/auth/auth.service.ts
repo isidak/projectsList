@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {UsersService} from '../users.service';
+import {UsersService} from 'users-admin-lib';
 import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
 import {map, switchMap, tap} from 'rxjs/operators';
 

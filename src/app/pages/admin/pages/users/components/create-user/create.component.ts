@@ -1,5 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
-import {UsersService} from '../../services/users.service';
+import {UsersService} from 'users-admin-lib';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 

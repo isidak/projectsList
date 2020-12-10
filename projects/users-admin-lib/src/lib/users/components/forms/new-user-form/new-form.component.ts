@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AbstractFormComponent} from '../abstract-form/abstract-form.component';
 
 @Component({
-  selector: 'app-new-form',
+  selector: 'lib-app-new-form',
   templateUrl: './new-form.component.html',
   styleUrls: ['./new-form.component.css']
 })

@@ -2,7 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {BaseUserComponent} from './base-user/base-user.component';
 
 @Component({
-  selector: 'app-user',
+  selector: 'lib-app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UsersAdminLibService } from './users-admin-lib.service';
+import {UsersService} from 'users-admin-lib';
 
-describe('UsersAdminLibService', () => {
-  let service: UsersAdminLibService;
+describe('UsersService', () => {
+  let service: UsersService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(UsersAdminLibService);
+    service = TestBed.inject(UsersService);
   });
 
   it('should be created', () => {

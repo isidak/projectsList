@@ -8,7 +8,7 @@ import {switchMap} from 'rxjs/operators';
 import {AbstractFormComponent} from '../abstract-form/abstract-form.component';
 
 @Component({
-  selector: 'app-edit',
+  selector: 'lib-app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
