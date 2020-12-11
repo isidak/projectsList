@@ -3,9 +3,9 @@ import {UsersService} from 'users-admin-lib';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
-import {LoginComponent} from './pages/users/components/login/login.component';
+import {LoginComponent} from './pages/login/login.component';
 import {BaseUserModel} from './pages/users/models/base-user.model';
-import {AuthService} from './pages/users/services/auth/auth.service';
+import {AuthService} from '../../core/modules/Auth/services/auth.service';
 
 @Component({
   selector: 'app-admin',

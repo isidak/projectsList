@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
-import {AuthService} from '../services/auth/auth.service';
+import {AuthService} from '../services/auth.service';
 import {map} from 'rxjs/operators';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {NotAuthorizedComponent} from '../components/not-authorized/not-authorized.component';
+import {NotAuthorizedComponent} from '../../../../pages/admin/pages/users/components/not-authorized/not-authorized.component';
 
 @Injectable({
   providedIn: 'root'

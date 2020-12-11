@@ -6,7 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {httpInterceptorProviders} from './pages/todo/interceptor/http-interceptor/interceptors';
+import {httpInterceptorProviders} from './core/interceptor/http-interceptor/interceptors';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {CommonModule} from '@angular/common';
 

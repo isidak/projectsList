@@ -10,5 +10,4 @@ export * from './lib/users/components/user/base-user/base-user.component';
 export * from './lib/users/services/users.service';
 export * from './lib/users/models/base-user.model';
 export * from './lib/users/models/user.model';
-export * from './lib/users/components/forms/abstract-form/abstract-form.component';
 export * from './lib/users/components/forms/edit-form/edit.component';

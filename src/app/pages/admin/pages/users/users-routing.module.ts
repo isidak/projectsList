@@ -4,7 +4,7 @@ import {UsersComponent} from './users.component';
 import {ListComponent} from './components/lists/list/list.component';
 import {EditFormComponent} from 'users-admin-lib';
 import {CreateComponent} from './components/create-user/create.component';
-import {AuthGuard} from './guards/auth.guard';
+import {AuthGuard} from '../../../../core/modules/Auth/guards/auth.guard';
 import {EditListComponent} from './components/lists/edit-list/edit-list.component';
 
 const routes: Routes = [

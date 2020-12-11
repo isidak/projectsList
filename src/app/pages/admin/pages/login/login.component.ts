@@ -1,8 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {AbstractFormComponent} from 'users-admin-lib';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../services/auth/auth.service';
+import {AuthService} from '../../../../core/modules/Auth/services/auth.service';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -10,19 +9,25 @@ import {Subscription} from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent extends AbstractFormComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy {
 
+  form: FormGroup;
   error = false;
   private subscriptions = new Subscription();
 
   constructor(public activeModal: NgbActiveModal,
-              public fb: FormBuilder,
-              public authService: AuthService) {
-    super();
+              private fb: FormBuilder,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    super.ngOnInit();
+    this.createForm();
+  }
+
+  createForm(): void {
+    this.form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
   }
 
   login(): void {
@@ -36,11 +41,6 @@ export class LoginComponent extends AbstractFormComponent implements OnInit, OnD
     this.subscriptions.add(loginSub);
   }
 
-  protected generateFormGroup(): FormGroup {
-    return this.fb.group({
-      email: ['', [Validators.required, Validators.email]]
-    });
-  }
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();

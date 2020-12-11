@@ -9,7 +9,7 @@ import {UsersAdminLibModule} from 'users-admin-lib';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {SideNavbarComponent} from './components/side-navbar/side-navbar.component';
-import {LoginComponent} from './components/login/login.component';
+import {LoginComponent} from '../login/login.component';
 import {NotAuthorizedComponent} from './components/not-authorized/not-authorized.component';
 import {EditListComponent} from './components/lists/edit-list/edit-list.component';
 
