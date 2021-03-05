@@ -9,7 +9,6 @@ import {AbstractFormComponent} from '../abstract-form/abstract-form.component';
 })
 export class NewFormComponent extends AbstractFormComponent {
   @Output() saveForm = new EventEmitter();
-  form: FormGroup;
 
   constructor(public fb: FormBuilder) {
     super();
